@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+NEWSINDIA
+{% endblock %}
+{% block x %}
+<style>
+    .pic:hover
+    {
+    box-shadow:0px 0px 10px #00796B;
+    }
+    .ipic
+    {
+    max-height:300px;
+    }
+    .ipic:hover
+    {
+    transform:scale(1.1);
+    transition:all ease in 1s;
+    }
+</style>
+<div class="row slider">
+           <div class="col-sm-8 s1 p-0">
+               <!--start slider-->
+<div id="carouselExample" class="carousel carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+   <div class="carousel-item active">
+     <img src="{% static 'images/slide2.jpg' %}" class="d-block w-100 slide-h" alt="..." height="450px">
+      <div class="carousel-caption d-none d-md-block" style="border-style: dotted;color:#07535c;background-color:rgba(217,218,223,0.2);">
+        <h5 class="text-darkcolor fs-1" style="color:#07535c;">Welcome to the TechnoNews</h5>
+        <p class="fw-bold fs-2">Latest and fastest News</p>
+      </div>
+    </div>
+    <!--loop-->
+      {% if res %}
+      {% for a in res %}
+    <div class="carousel-item">
+      <img src="/{{a.spic}}" class="d-block w-100 slide-h" alt="..." height="450px">
+      <div class="carousel-caption d-none d-md-block" style="border-style: dotted;background-color:rgba(217,218,223,0.2);">
+          <a href="/user/slidenews?n={{a.id}}" style="text-decoration:none;color:#07535c"><h5 class=" fs-2"><b>{{a.shead}}</b></h5></a>
+        <p class="fw-bold color-dark">{{a.ssubject}}</p>
+      </div>
+    </div>
+      {% endfor %}
+      {% endif %}
+      <!--endloop-->
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="True"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="True"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+               <!--end slider-->
+           </div>
+           <div class="col-sm-4" >
+               <marquee direction="up" behavior="" scrollamount="13s" onmouseover="this.stop()" onmouseout="this.start()" style="background-color:#d9dadf;" >
+                <div class="row g-0 mt-1 slide-h">
+                    {% if tdata %}
+                    {% for t in tdata %}
+                    <div class="col-md-4 pe-2">
+                        <img src="/{{t.tpic}}" class="img-fluid rounded-start " style="height:150px;" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body pt-2 h-25">
+                            <a href="/user/trendnews?n={{t.id}}" style="text-decoration:none;"><h5 class="card-title text-dark">{{t.thead}}</h5></a>
+                            <br>
+                            <p class="card-text"><i class="fa-solid fa-calendar-days"></i> {{t.tdate}}</p>
+                        </div>
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+               </marquee>
+           </div>
+       <div class="row ncategory mt-4">
+           <h4 class="text-center fs-2 py-2"><i class="fa-solid fa-newspaper"></i>&nbspNEWS<b class="text1-mycolor">&nbsp&nbspCATEGORY&nbsp<i class="fa-solid fa-newspaper"></i></b></h4>
+           <div class="col-sm-1"></div>
+           <div class="col-sm-10">
+               <div class="row">
+                   {% if data %}
+                   {% for x in data %}
+                   <div class="col-sm-2 pt-2">
+                       <div class="card border border-2" style="background-color:#d9dadf; height=200px;">
+                           <img src="/{{x.cpic}}" class="img-card-top pic"/>
+                           <div class="card-body">
+                               <a href="/user/viewnews?ab={{x.id}}" style="text-decoration:none;"><h5 class="card-title text-center text-darkcolor">{{x.category}}</h5></a>
+                           </div>
+                       </div>
+                   </div>
+                   {% endfor %}
+                   {% endif %}
+               </div>
+           </div>
+           <div class="col-sm-1"></div>
+       </div>
+       
+</div>
+           </div>
+</div>
+    </div>
+    <div class="row inews pt-5 px-5">
+           <h4 class="text-center fs-2 py-2"><i class="fa-solid fa-newspaper"></i>&nbspOur Latest<b class="text1-mycolor">&nbspNews</b>&nbsp<i class="fa-solid fa-newspaper"></i></h4>
+           {% if ndata %}
+            {% for x in ndata %}
+            <div class="col-sm-3 py-3" style="height:600px;">
+                <!--start card-->
+                <div class="card">
+                   <img src="/{{x.npic}}" class="card-img-top pic ipic" alt="...">
+                     <div class="card-body" style="background-color:#d9dadf;">
+                        <h5 class="card-title text-center text-darkcolor">{{x.ntitle}}</h5>
+                         <h6 class="card-heading text-center">{{x.nhead}}</h6>
+                         <a href="/user/details?n={{x.id}}" class="btn btn-sm btn-mycolor  fw-bold">Veiw More<i class="fa-solid fa-eye"></i></a><br><br>
+                        <i class="fa-solid fa-calendar-days"></i> {{x.ndate}}
+                     </div>
+                 </div>
+                <!--end card-->
+            </div>
+            {% endfor %}
+            {% endif %}
+       </div>
+       <div class="row vnews pt-5">
+           <h4 class="text-center fs-2 py-2"><i class="fa-solid fa-video"></i>&nbspVideo<b class="text1-mycolor">&nbspNews</b>&nbsp<i class="fa-solid fa-video"></i></h4>
+           {% for x in vdata %}
+    <div class="col-sm-4 mt-4">
+        <!--start card-->
+        <div class="card">
+          <iframe width="560" style="max-height:250px;"  class=" card-img-top" height="315" src="{{x.vlink}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="card-body" style="background-color:#d9dadf;">
+            <h5 class="card-title">{{x.vhead}}</h5>
+                <b>{{x.vcategory}}</b><br><br>
+                <span><a href="/user/videodetails?vd={{x.id}}" class="btn btn-sm btn-mycolor">View More <i class="fa-solid fa-eye"></i></a></span>
+                <br><br>
+               <i class="fa-solid fa-city"></i> {{x.vcity}}
+               <span class="float-end"><i class="fa-solid fa-calendar-days"></i> Date:{{x.vdate}}</span>
+         </div>
+        </div>
+        <!--end card-->
+    </div>
+     {% endfor %}
+
+       </div>
+       <div class="row city pt-5 px-5">
+           <h4 class="text-center fs-2 py-2"><i class="fa-solid fa-city"></i>&nbspCITY<b class="text1-mycolor">&nbspNEWS</b>&nbsp<i class="fa-solid fa-city"></i></h4>
+                   {% if ncity %}
+                   {% for x in ncity %}
+                   <div class="col-sm-2 pt-3 ">
+                       <div class="card border border-2">
+                           <img src="/{{x.cpic}}" class="img-card-top pic" style="max-height:130px;"/>
+                           <div class="card-body" style="background-color:#d9dadf;">
+                               <a href="/user/citynews?ab={{x.id}}" style="text-decoration:none;"><h5 class="card-title text-center text-darkcolor">{{x.ncity}}</h5></a>
+                           </div>
+                       </div>
+                   </div>
+                   {% endfor %}
+                   {% endif %}
+       </div>
+{% endblock %}
+
+

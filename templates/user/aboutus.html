@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+
+ABOUTUS
+{% endblock %}
+
+{% block x %}
+<style>
+    .about
+    {
+    min-height:300px;
+    }
+</style>
+<div class="fs-3 text-center">About Techno<b class="text-darkcolor">News</b></div>
+<p class="text-center text-secondary mt-2" style="margin:0px 380px;">There are various reason to choose us for your knowledge
+    about our surroundings with the help of latest news. Believe me you will find us best.</p>
+<div class="row about my-5">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5" >
+        <video src="{% static 'videos/newsvideo.mp4' %}"  height="300px" style="border:5px double gray;margin-left:90px;" muted controls > </video>
+    </div>
+    <div class="col-sm-5 px-4">
+    <p class="fs-5">Welcome To TechnoNews, Just There Is Some Litle Word To Describe About Our Website.</p>
+     <p class="text-secondary me-5 ">TechnoNews is founded by some young software engineers who have mastered the CS sector,
+         whose objective is to achieve the highest position in the CS sector across the country,
+         who are trying to achieve this objective by cooperating in various fields.</p>
+     <p class="text-secondary me-5">TechnoNews is an organization working in all categories of news.
+         Which aims to make all the people to upgrade our knowledge about our surroundings and more.</p>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="row mt-3">
+        <div class="fs-3 text-center">Our<b class="text-darkcolor">Company</b></div>
+        <div class="col-sm-12" style="padding:0px 250px;text-align:justify;">
+       <P class="text-secondary mt-4" >TechnoNews is most proud of how its work impacts the real world and how it is using its powerful reach to campaign for and
+        with the people of India. Over 30 years of dedicated and innovative programming has brought into focus a number of social
+        issues ranging from the 7 Wonders of India; Save Our Tigers; the Greenathon and Jeene ki Asha to Marks for Sports; Support
+        My School; the University Sports Championships and the most recent Health4U campaigns on Heart Care, Diabetes, Cancer and Organ
+        Donation, Banega Swachch India, the Road to Safety and What’s your Choice? campaigns. Seen as an honest, unbiased and fearless crusader,
+           TechnoNews’s sustained and award winning campaigns against injustice and human rights violations have forced apathetic governments to act,
+           legislation to be changed and made the nation aware of the power of the people.
+       </p>
+        <p class="text-secondary">Its channels TechnoNews 24x7 (English),and India’s first ever 2-in-1 channel TechnoNews Profit-TechnoNews
+            Prime (Business and Infotainment) continue to raise the standards of journalism with innovative programming and uncompromising
+            integrity.
+        </p>
+        <p class="text-secondary">
+            Over the years, TechnoNews has expanded its brand portfolio to seize opportunities in the ‘beyond news space’ and has step-down
+            subsidiaries: TechnoNews Convergence (triple play; to exploit the synergies between television, Internet and mobile and owns the website
+            ndtv.com) and TechnoNews Worldwide offering high end consultancy for setting up of local television news channels in emerging markets
+            across the world.
+        </p>
+        <p class="text-secondary">
+            TechnoNews has been rated India’s Most Trusted TV Media Brand in the TRA Trust Brand Report, India Study 2016. In 2014 and 2015 TechnoNews was
+            rated the Most Trusted Band across all forms of media in India, including newspapers, radio, web sites and of course television.
+            It was the first time in media history that a media company has been both: Number 1 - India's most trusted brand across all
+            newspaper and channels, (All India Brand Trust Report 2014 and 2015). Several large and credible nationwide surveys have showed
+            that TechnoNews 24x7 has by far the highest viewership amongst all English News channels and is Number 1 in viewership amongst all
+            English news channels (independent Nationwide survey of 90,000 + households by Hansa Research). In addition, TechnoNews’s website
+            TechnoNews.com created a record in 2014 by recording 13 billion hits on one day, the day of the Lok Sabha (Parliament) Election results.
+        </p>
+         </div>
+    </div>
+</div>
+{% endblock %}

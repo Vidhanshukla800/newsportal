@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block x %}
+<style>
+    .pic:hover
+    {
+    box-shadow:0px 0px 10px #00796B;
+    }
+</style>
+<div class="fs-2 text-center">News<b class="text-darkcolor">Details</b></div>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+     <div class="row">
+      {% for x in ndata %}
+         <div class="card w-100 h-100 ">
+             <img src="/{{x.tpic}}" class="card-img-top  pic " alt="...">
+             <div class="card-body">
+                 <h5 class="card-title">{{x.thead}}</h5>
+               <p class="card-title">{{x.tdes}}</p><br>
+               <i class="fa-solid fa-calendar-days"></i> Date:
+               <span class="text-muted">{{x.tdate}}</span>
+             </div>
+         </div>
+      {% endfor %}
+     </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+{% endblock %}

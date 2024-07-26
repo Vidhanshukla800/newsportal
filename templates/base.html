@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TechnoNews</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="{% static 'css/all.css' %}" rel="stylesheet">
+    <script src="{% static 'js/index.js' %}"></script>
+    <link href="{% static 'css/Css.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row top bg-mycolor text-light ">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3 pt-1 ">
+          <i class="fa-solid fa-envelope"></i>
+            TechnoNewsIndia@gmail.com
+        </div>
+<div class="col-sm-1"></div>
+         <div class="col-sm-3 pt-1">
+            <i class="fa-solid fa-phone"></i>
+            +91&nbsp987654321
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3 fs-4">
+            <a href="{% url 'facebook' %}" style="color:white;"> <i class="fa-brands fa-facebook ms-3 s-icon"></i></a>
+           <a href="{% url 'insta' %}" style="color:white;"> <i class="fa-brands fa-instagram ms-3 s-icon"></i></a>
+               <a href="{% url 'youtube' %}" style="color:white;"> <i class="fa-brands fa-youtube ms-3 s-icon"></i></a>
+               <a href="{% url 'linkdin' %}" style="color:white;"> <i class="fa-brands fa-twitter ms-3 s-icon"></i></a>
+        </div>
+
+    </div>
+    <div class="row header sticky-top">
+        <nav class="navbar navbar-expand-lg ps-5">
+            <a href="#" class="navbar-brand fs-3 px-5"><i class="fa-solid fa-newspaper"></i>&nbspTECHNO<b class="text1-mycolor">NEWS</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/user/home"><i class="fa-solid fa-home"></i>Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/aboutus/"><i class="fa-solid fa-user"></i>AboutUs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/contact/" type="button"><i class="fa-solid fa-address-book"></i>Enquiry</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="/user/news/" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" ><i class="fa-regular fa-images"></i>Gallery</a>
+                        <div class="dropdown-menu">
+                            <a href="/user/gallery/" class="dropdown-item">Image</a>
+                            <a href="/user/video/" class="dropdown-item">Video</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="/user/news/" type="button"><i class="fa-solid fa-newspaper"></i>News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/"><i class="fa-solid fa-key"></i>LogIn/SignIn</a>
+                    </li>
+                    <li>
+                        <div class="input-group ms-5 pt-1">
+                            <div class="form-outline">
+                                <input id="search-input" type="search" id="form1" class="form-control"
+                                       placeholder="Search"/>
+                            </div>
+                            <button id="search-button" type="button" class="btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="row bg-mycolor text-light">
+        <div class="col-sm-12 sticky-top">
+            <div class="row">
+            <div class="col-sm-2 text-center" ><i>BreakingNews&nbsp<i class="fa-solid fa-newspaper"></i></i></div>
+                <div class="col-sm-10">
+                     {% if thd %}
+                    {% for t in thd %}
+                    <marquee>{{t.ttitle}}</marquee>
+                     {% endfor %}
+                    {% endif %}
+            </div>
+                </div>
+        </div>
+    </div>
+    <div class="row content">
+        <div class="col-sm-12 py-2">
+            {% block x %}
+
+            {% endblock %}
+        </div>
+
+    </div>
+    <div class="row ufooter  text-white bg-mycolor">
+        <div class="row pt-5" style="min-height:500px;">
+            <div class="col-sm-4">
+                <div class="ms-4">
+                    <a href="#" class="navbar-brand fs-2">TECHNO<b>NEWS</b></a><br/>
+                    <b class="justify-content">TECHNONEWS make sure you do not miss any interesting topics or news going
+                        around you.Get Latest news updates and breaking news alert from India.</b>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h3>Recent HeadLines</h3>
+                <ul>
+                    {% if tdata %}
+                    {% for t in tdata %}
+                    <li class="my-2">
+                        <a href="/user/trendnews?n={{t.id}}" style="color:white;hover:black;"> {{t.thead}}</a>
+                    </li>
+                {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <h3>OffICE ADDRESS</h3>
+                <ul style="list-style:none;">
+                    <li><i class="fa-solid fa-phone my-2 mx-3"></i>+91&nbsp 9876543210</li>
+                    <li><i class="fa-solid fa-envelope my-2 mx-3"></i>vidhan@gmail.com</li>
+                    <li><i class="fa-brands fa-chrome my-2 mx-3"></i>www.TechnoNews.com</li>
+                    <li>
+                        <iframe class="my-2 mx-3"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.1273601540133!2d81.24072391486771!3d26.225050983428545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399ba127de8ed54d%3A0x9210a78a70562227!2sTechnoChangers!5e0!3m2!1sen!2sin!4v1661891882545!5m2!1sen!2sin"
+                                width="200" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </li>
+                </ul>
+            </div>
+          <div class="row bfooter bg-mycolor text-mycolor">
+                    <div class="text-center">DEVELOPED BY:VIDHAN SHUKLA<br>
+</div>
+            </div>
+                 </div>
+            </div>
+            </div>
+        </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

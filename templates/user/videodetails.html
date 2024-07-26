@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block x %}
+<style>
+    .pic:hover
+    {
+    box-shadow:0px 0px 10px #00796B;
+    }
+</style>
+<div class="fs-2 text-center">News<b class="text-darkcolor">Details</b></div>
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+     <div class="row">
+      {% for x in ndata %}
+         <div class="card w-100 h-100 ">
+             <iframe width="560" style="max-height:400px;"  class=" card-img-top pic" height="315" src="{{x.vlink}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+             <div class="card-body">
+                 <h5 class="card-title">{{x.vhead}}</h5>
+                <b>{{x.vcategory}}</b><br><br>
+                <p>{{x.vdes|safe }}</p><br>
+               <i class="fa-solid fa-city"></i> <b>{{x.vcity}}</b>
+               <span class="float-end"><i class="fa-solid fa-calendar-days"></i> Date:{{x.vdate}}</span>
+             </div>
+         </div>
+      {% endfor %}
+     </div>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+{% endblock %}
+

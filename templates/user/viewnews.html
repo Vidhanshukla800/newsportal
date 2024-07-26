@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+VIEWNEWS
+{% endblock %}
+
+{% block x %}
+<style>
+    .pic:hover
+    {
+    box-shadow:0px 0px 10px #00796B;
+    }
+</style>
+<div class="fs-2 text-center">NEWS
+    <i class="fa-solid fa-eye"></i></div>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="row">
+            <!--start news-->
+            {% for x in ndata %}
+            <div class="col-sm-4 mt-3">
+               <div class="card">
+                   <img src="/{{x.npic}}" class="img-card-top pic"/>
+                   <div class="card-body">
+                       <h5>{{x.ncategory}}</h5>
+                       <b>{{x.ntitle}}</b><br>
+                       <i>{{x.nhead}}</i><br>
+                       <a href="/user/details?n={{x.id}}" class="btn btn-sm btn-mycolor bg-danger fw-bold">Veiw More<i class="fa-solid fa-eye"></i></a>
+                       <br><br> <i class="fa-solid fa-city"></i> {{x.ncity}}
+                       <span class="float-end"><i class="fa-solid fa-calendar-days"></i> Date:{{x.ndate}}</span>
+                   </div>
+               </div>
+            </div>
+            {% endfor %}
+            <!--end news-->
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+{% endblock %}

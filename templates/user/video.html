@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+VIDEO GALLERY
+{% endblock %}
+
+{% block x %}
+<div class="fs-2 text-center">Video<b class="text-darkcolor">NEWS
+    <i class="fa-solid fa-video"></i></b></div>
+<div class="row mt-4 mb-4">
+    <div class="col-sm-6 mx-auto bg-mycolor p-2">
+        <div class="row">
+            <form method="get">
+             {% csrf_token %}
+            <div class="input-group">
+                <input name="search" type="text" class="form-control"/>
+                <span class="input-group-text bg-mycolor">
+                  <input type="submit" class="bg-mycolor text-light border border-success"/>
+                </span>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    {% for x in vdata %}
+    <div class="col-sm-4">
+        <!--start card-->
+        <div class="card">
+          <iframe width="560" style="max-height:250px;"  class=" card-img-top" height="315" src="{{x.vlink}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="card-body">
+            <h5 class="card-title">{{x.vhead}}</h5>
+                <b>{{x.vcategory}}</b><br><br>
+                <span><a href="/user/videodetails?vd={{x.id}}" class="btn btn-sm btn-mycolor">View More <i class="fa-solid fa-eye"></i></a></span>
+                <br><br>
+               <i class="fa-solid fa-city"></i> {{x.vcity}}
+               <span class="float-end"><i class="fa-solid fa-calendar-days"></i> Date:{{x.vdate}}</span>
+         </div>
+        </div>
+        <!--end card-->
+    </div>
+     {% endfor %}
+</div>
+{% endblock %}

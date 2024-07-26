@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block title %}
+CONTACTUS
+{% endblock %}
+
+{% block x %}
+
+
+<style>
+    .back-color
+    {
+    background:#B2DFDB;
+    }
+    .text-line
+    {
+    text-decoration:none;
+    }
+    .dark-head:hover
+    {
+    color:#00796B;
+    }
+</style>
+<div class="fs-2 text-center ">Contact<b class="text-darkcolor">Us
+    <i class="fa-solid fa-location-dot"></i></b></div>
+ <p class="text-center text-secondary">You may contact us by contact number or filling in this form any time you want details of any News.</p>
+<div class="row ">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5 frm " >
+       <u class=" fs-3 text-line" > Send Your <u class="text-darkcolor text-line">Message</u></u><hr class="w-25 text-darkcolor"><br>
+        <form method="POST" class="p-3">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <span class="input-group-text bg-mycolor text-light " ><i class="fa-solid fa-user"></i></span>
+                <input name="name" type="text" class="form-control" required placeholder="Enter Your Name"/>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text bg-mycolor text-light " ><i class="fa-solid fa-envelope"></i></span>
+                <input type="email" name="email" class="form-control" required placeholder="Enter Your Email"/>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text bg-mycolor text-light " ><i class="fa-solid fa-phone"></i></span>
+                <input name="mob" type="text" class="form-control" required placeholder="Enter Your Mobile Number"/>
+            </div>
+            <div class="input-group mb-5">
+                <span class="input-group-text bg-mycolor text-light " ><i class="fa-solid fa-message"></i></span>
+                <textarea name="msg"  class="form-control" required placeholder="Enter Message"/></textarea>
+            </div>
+                <input type="submit" value="SEND MESSAGE" class="form-control btn-mycolor fw-bold w-25"/>
+
+        </form>
+
+        <br>
+        {% if msg %}
+        <div class="alert alert-success">
+            Your Data Saved Successfully........
+         <!--  Name is: {{Name}}<br>
+           Email is: {{Email}}<br>
+           Mobile is: {{Mobile}}<br>
+           Message is: {{Message}}<br>-->
+        </div>
+        {% endif %}
+        <br>
+        <hr class="text-darkcolor">
+    </div>
+
+    <div class="col-sm-4 back-color text-gray m-5 p-5">
+       <u class=" fs-3 text-line"> Contact Info</u><hr class="w-25 text-darkcolor"><br>
+        <div class="row">
+            <div class="col-sm-12 text-secondary">
+                <i class="fa-solid fa-location-dot text-darkcolor fs-5"></i> <u class="text-line text-darkcolor fs-5">Office Address</u><br>
+                &nbsp&nbsp&nbsp abc nagar<br>
+                &nbsp&nbsp&nbsp  Lucknow,<br>
+                &nbsp&nbsp&nbsp Uttar Pradesh
+             </div>
+         </div>
+        <div class="row mt-3">
+            <div class="col-sm-12 text-secondary ">
+                <i class="fa-solid fa-phone text-darkcolor fs-5"></i> <u class="text-line text-darkcolor fs-5">Call US</u><br>
+                &nbsp&nbsp&nbsp<a href="#" class="text-line text-secondary"><u class="text-line dark-head">+91 987654321 </u></a><br>
+                &nbsp&nbsp&nbsp<a href="#" class="text-line text-secondary"><u class="text-line dark-head"> +91 987654321</u></a>
+             </div>
+         </div>
+        <div class="row mt-3">
+            <div class="col-sm-12 text-secondary ">
+                <i class="fa-solid fa-location-dot text-darkcolor fs-5"></i> <u class="text-line text-darkcolor fs-5">Office Address</u><br>
+                &nbsp&nbsp&nbsp<a href="#" class="text-line text-secondary"><u class="text-line dark-head"> vidhanshukla@gmail.com </u></a>
+             </div>
+         </div>
+    </div>
+    <div class="col-sm-2"></div>
+    <br>
+    <div class="row">
+        <div class="row head">
+            <div class="col-sm-12 text-center">
+                <u class="text-line fs-3">Find Us On <b class=" text-darkcolor">Google Map</b> <i class="fa-solid fa-location-crosshairs text-darkcolor"></i></u>
+                <p class="text-secondary">Views us on Google Map Easily.</p>
+            </div>
+        </div>
+       <div class="row map">
+           <div class="col-sm-12 ">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.1616605872946!2d80.
+                      96419201485244!3d26.89836408313373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39995785d5f7f1a5%3A0xffa47f1efe103f0d!
+                      2sTechpile%20Technology%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1661953232709!5m2!1sen!2sin"
+                        height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-100"></iframe>
+           </div>
+       </div>
+    </div>
+</div>
+{% endblock %}
